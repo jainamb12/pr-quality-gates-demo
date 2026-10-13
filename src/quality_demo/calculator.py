@@ -8,8 +8,7 @@ def calculate_statistics(numbers: list[Real]) -> dict[str, float | int]:
         raise ValueError("The input list cannot be empty.")
 
     if any(
-        isinstance(number, bool) or not isinstance(number, Real)
-        for number in numbers
+        isinstance(number, bool) or not isinstance(number, Real) for number in numbers
     ):
         raise TypeError("All values must be real numbers.")
 
