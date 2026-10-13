@@ -1,6 +1,6 @@
 from math import fsum
 from numbers import Real
-
+import os
 
 def calculate_statistics(numbers: list[Real]) -> dict[str, float | int]:
     """Calculate basic statistics for a non-empty list of numbers."""
