@@ -23,6 +23,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Allow PowerShell scripts for this process
+        shell: powershell
+        run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -79,6 +83,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Allow PowerShell scripts for this process
+        shell: powershell
+        run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -117,6 +125,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+
+      - name: Allow PowerShell scripts for this process
+        shell: powershell
+        run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
       - name: Set up Python
         uses: actions/setup-python@v6
