@@ -1,1 +1,1 @@
-aws_access_key_id = "AKIAIOSFODNN7EXAMPLE"
+password = "password1234567890abcdef"
