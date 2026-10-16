@@ -62,14 +62,14 @@ jobs:
 
       - name: Verify test file
         run: |
-        echo "Checking if secret_test.py exists"
-        ls -l secret_test.py
+          echo "Checking if secret_test.py exists"
+          ls -l secret_test.py
 
-        echo "Checking test file contents"
-        cat secret_test.py
+          echo "Checking test file contents"
+          cat secret_test.py
 
-        echo "Checking latest commits"
-        git log -5 --oneline
+          echo "Checking latest commits"
+          git log -5 --oneline
 
       - name: Run Gitleaks
         uses: gitleaks/gitleaks-action@v3
