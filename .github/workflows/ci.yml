@@ -71,6 +71,26 @@ jobs:
           echo "Checking latest commits"
           git log -5 --oneline
 
+            - name: Debug Gitleaks directory scan
+        shell: bash
+        run: |
+          set -e
+
+          VERSION="8.24.3"
+
+          curl -sSfL \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" \
+            -o /tmp/gitleaks.tar.gz
+
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+
+          /tmp/gitleaks version
+
+          /tmp/gitleaks dir \
+            --config .gitleaks.toml \
+            --verbose \
+            .
+
       - name: Run Gitleaks
         uses: gitleaks/gitleaks-action@v3
         env:
