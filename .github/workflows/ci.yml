@@ -51,19 +51,30 @@ jobs:
         run: pre-commit run --all-files
 
   secret-scan:
-    name: Secret scan
-    runs-on: ubuntu-latest
+  name: Secret scan
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
 
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Verify test file
+      run: |
+        echo "Checking if secret_test.py exists"
+        ls -l secret_test.py
+
+        echo "Checking test file contents"
+        cat secret_test.py
+
+        echo "Checking latest commits"
+        git log -5 --oneline
+
+    - name: Run Gitleaks
+      uses: gitleaks/gitleaks-action@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   repo-guard:
     name: Repo guard
